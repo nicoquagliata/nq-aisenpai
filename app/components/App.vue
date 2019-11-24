@@ -6,7 +6,7 @@
         <div class="container">
           <h1 class="title">ToDo List</h1>
             <div class="row pt-5">
-                <div class="col-md-5">
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
                             <form @submit.prevent="sendTask">
