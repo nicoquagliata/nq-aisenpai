@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Task = require('../models/Task');
+const Task = require('../models/Todo');
 
 router.get('/', async (req, res) => {
     const tasks = await Task.find();
