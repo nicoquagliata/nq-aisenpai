@@ -22,3 +22,18 @@ npm install mongoose
 mongodb user
 aisenpai senpai.2020
 
+// instalo webpack
+npm install webpack
+
+// despues de configurar hago
+npm run webpack
+npm remove webpack
+npm install webpack -D
+
+npm install babel-loader babel-preset-env vue-loader vue-template-compiler -D
+
+npm install babel-core babel-preset-env -D
+
+// arreglar problema de compatibilidad de versiones
+npm install -D babel-loader @babel/core @babel/preset-env webpack
+

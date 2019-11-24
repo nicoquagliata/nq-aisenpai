@@ -4,8 +4,9 @@
   "description": "proyecto de para la entrega final",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "webpack": "webpack --mode development"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,16 @@
     "mongoose": "^5.7.12",
     "morgan": "^1.9.1",
     "nodemon": "^2.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
+    "vue-loader": "^15.7.2",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }
