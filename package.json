@@ -1,0 +1,26 @@
+{
+  "name": "nq-aisenpai",
+  "version": "1.0.0",
+  "description": "proyecto de para la entrega final",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicoquagliata/nq-aisenpai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicoquagliata/nq-aisenpai/issues"
+  },
+  "homepage": "https://github.com/nicoquagliata/nq-aisenpai#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12",
+    "morgan": "^1.9.1",
+    "nodemon": "^2.0.1"
+  }
+}

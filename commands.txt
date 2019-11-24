@@ -1,0 +1,24 @@
+// inicializo el proyecto en la carpeta
+npm init --yes
+
+// creo 2 archivos
+.babelrc y webpack.config.js
+
+// creo index.js
+// creo carpetas routes public y models
+
+// instalo express
+npm install express
+
+// instalo nodemon (reinicio servidor automatico con npm run dev)
+npm install nodemon
+
+// morgan - dice que peticiones recive el servidor
+npm install morgan
+
+// instalo mongoose para trabajar con mongodb
+npm install mongoose
+
+mongodb user
+aisenpai senpai.2020
+
