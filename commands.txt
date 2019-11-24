@@ -37,3 +37,7 @@ npm install babel-core babel-preset-env -D
 // arreglar problema de compatibilidad de versiones
 npm install -D babel-loader @babel/core @babel/preset-env webpack
 
+// instalo vue
+npm install vue -D
+
+

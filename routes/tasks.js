@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const Task = require('../models/task');
+const Task = require('../models/Task');
 
 router.get('/', async (req, res) => {
     const tasks = await Task.find();
@@ -10,7 +10,6 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
     const task = new Task (req.body);
-    //console.log(task);
     await task.save();
     res.json({
         status: 'Task saved'
