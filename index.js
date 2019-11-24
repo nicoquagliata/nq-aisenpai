@@ -17,6 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use('/tasks', require('./routes/tasks'));
+app.use('/health', require('./routes/health'));
 
 // Static Files
 app.use(express.static(__dirname + '/public'));
