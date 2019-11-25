@@ -17,6 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/SimpleUpload', require('./routes/simpleUpload'));
 app.use('/health', require('./routes/health'));
 
 // Static Files
