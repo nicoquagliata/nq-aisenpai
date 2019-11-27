@@ -1,8 +1,5 @@
 <template>
     <div>
-        <nav class="navbar navbar-light bg-light">
-            <a href="/" class="navbar-brand">HOME</a>
-        </nav>
         <div class="container">
           <h1 class="title">ToDo List</h1>
             <div class="row pt-5">
@@ -28,17 +25,21 @@
                 </div>
 
             <div class="col-md-7    ">
+
+
+
                 <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th>Task</th>
                         <th>Description</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="task of tasks">
-                        <td>{{task.title}}</td>
-                        <td>{{task.description}}</td>
+                    <tr  v-for="(value, index) in tasks" v-bind:key="index">
+                        <td>{{value.title}}</td>
+                        <td>{{value.description}}</td>
                         <td>
                   <button @click="deleteTask(task._id)" class="btn btn-danger">Delete</button>
                   <button @click="editTask(task._id)" class="btn btn-secondary">

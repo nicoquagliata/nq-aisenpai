@@ -40,4 +40,7 @@ npm install -D babel-loader @babel/core @babel/preset-env webpack
 // instalo vue
 npm install vue -D
 
+// manejo de archivos axios
+npm install axios
+
 
