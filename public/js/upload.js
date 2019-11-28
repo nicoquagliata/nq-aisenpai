@@ -12,12 +12,13 @@ function requestName() {
     let divRespuesta = document.querySelector('#response');
 
     formData.append('imagen', fileField.files[0]);
+    console.log(formData);
 
     fetch(remoteApi, {
             method: 'POST',
             body: formData
         })
-        //.then(response => response.json())
+        .then(response => response.json())
         .then(async response => {
             //console.log('Respuesta reconocer():', response);
             //mostrarImagen(fileField);
