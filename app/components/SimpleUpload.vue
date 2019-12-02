@@ -14,34 +14,35 @@
 </template>
 
 <script>
-import SimpleUpload from'./SimpleUpload.vue';
-import axios from 'axios';
+    import SimpleUpload from'./SimpleUpload.vue';
+    import axios from 'axios';
 
-export default {
-    name: "SimpleUpload",
-    components: { SimpleUpload },
-
-    data(){
-        return {
-            file: ""
-        }
-    },
-    methods: {
-        selectFile(){
-            this.file = this.$refs.file.files[0];
+    export default {
+        name: "SimpleUpload",
+        components: { 
+            SimpleUpload 
         },
-        async sendFile(){
-            const formData = new FormData();
-            formData.append('file', this.file);
-            try {
-                await axios.post('/api/SimpleUpload', formData);
-            } catch (err) {
-                console.log(err);
+        data(){
+            return {
+                file: ""
             }
-            
+        },
+        methods: {
+            selectFile(){
+                this.file = this.$refs.file.files[0];
+            },
+            async sendFile(){
+                const formData = new FormData();
+                formData.append('file', this.file);
+                try {
+                    await axios.post('/api/SimpleUpload', formData);
+                } catch (err) {
+                    console.log(err);
+                }
+                
+            }
         }
     }
-}
 </script>
 
 <style>
