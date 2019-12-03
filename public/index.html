@@ -12,6 +12,16 @@
 <body>
     <div class=".col-md-">
         <div id="head"></div>
+
+        <script src=https://assistant-web.watsonplatform.net/loadWatsonAssistantChat.js> </script> <script>
+            window.loadWatsonAssistantChat({
+                //integrationID: "ac58c247-1eba-42ad-b9c2-33ee309ea630",
+                integrationID: "ceba1439-b6da-4975-b962-1dc5d53a435d",
+                region: "us-south"
+            }).then(function (instance) {
+                instance.render();
+            });
+        </script>
         
         <div id="app"></div>
     </div>
