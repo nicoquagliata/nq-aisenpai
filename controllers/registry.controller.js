@@ -41,6 +41,7 @@ exports.checkStatus = (req, res) => {
         });
     }
     let user = req.body.id;
+    console.log(user);
     let today = new Date();
     today.setHours(0);
     today.setMinutes(0);
@@ -70,8 +71,8 @@ exports.checkStatus = (req, res) => {
             //let registryDate = new Date(response[i].createdAt);              
         }
 
-        if (usersArrived[code] == true){
-            if(usersLeft[code] == true){
+        if (usersArrived[user] == true){
+            if(usersLeft[user] == true){
                 userStatus = 2;
             } else {
                 userStatus = 1;
@@ -84,7 +85,7 @@ exports.checkStatus = (req, res) => {
         });
     });
 
-};
+}
 
 // Retrieve and return all registries from the database.
 exports.findAll = (req, res) => {

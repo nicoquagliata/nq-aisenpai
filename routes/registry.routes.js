@@ -11,6 +11,7 @@ router.get('/findByDate/:date', registries.findByDate);
 router.get('/exit/:name', registries.findOneExit);
 
 router.get('/check/:code', registries.checkIfIsAtTheOffice);
+router.post('/checkStatus', registries.checkStatus);
 
 
 module.exports = router;
