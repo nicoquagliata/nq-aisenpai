@@ -31,6 +31,61 @@ exports.create = (req, res) => {
     });
 };
 
+// check if someone is active
+exports.checkStatus = (req, res) => {
+    console.log(req.body);
+    // Validate request
+    if(!req.body) {
+        return res.status(400).send({
+            message: "Query content can not be empty"
+        });
+    }
+    let user = req.body.id;
+    let today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+    let tomorrow = new Date(today);
+    tomorrow.setDate (tomorrow.getDate()+1);
+
+    Registry.find({ createdAt: { $gte: today, $lt: tomorrow }})
+    
+    .then(response => {
+        //console.log(registry);
+        const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne'];
+        let userStatus = 0;
+        let usersArrived = [];
+        let usersLeft = [];
+        
+        for (var i = 0; i < response.length; i++) {
+            for (var j=0; j < workers.length; j++){
+                if (response[i].name == workers[j]){
+                    if(response[i].source=='exitCam'){
+                        usersLeft[j] = true;
+                    } else {
+                        usersArrived[j] = true;
+                    }
+                }
+                //console.log(activeUsers[j])
+            }
+            //let registryDate = new Date(response[i].createdAt);              
+        }
+
+        if (usersArrived[code] == true){
+            if(usersLeft[code] == true){
+                userStatus = 2;
+            } else {
+                userStatus = 1;
+            }
+        } 
+        res.send({'userStatus': userStatus});
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving registries."
+        });
+    });
+
+};
+
 // Retrieve and return all registries from the database.
 exports.findAll = (req, res) => {
     Registry.find()
