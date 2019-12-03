@@ -111,6 +111,62 @@ exports.findOne = (req, res) => {
     });
 };
 
+
+// Check if a single user is at the office
+exports.checkIfIsAtTheOffice = (req, res) => {
+    let code = req.params.code;
+    console.log(code);
+
+    let today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+    let tomorrow = new Date(today);
+    tomorrow.setDate (tomorrow.getDate()+1);
+
+    console.log(today);
+    console.log(tomorrow);
+
+    Registry.find({ createdAt: { $gte: today, $lt: tomorrow }})
+    
+    .then(response => {
+        //console.log(registry);
+        const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne'];
+        let userStatus = 0;
+        let usersArrived = [];
+        let usersLeft = [];
+        
+        for (var i = 0; i < response.length; i++) {
+            for (var j=0; j < workers.length; j++){
+                if (response[i].name == workers[j]){
+                    if(response[i].source=='exitCam'){
+                        usersLeft[j] = true;
+                    } else {
+                        usersArrived[j] = true;
+                    }
+                }
+                //console.log(activeUsers[j])
+            }
+            //let registryDate = new Date(response[i].createdAt);              
+        }
+
+        if (usersArrived[code] == true){
+            if(usersLeft[code] == true){
+                userStatus = 2;
+            } else {
+                userStatus = 1;
+            }
+        } 
+        res.send({'userStatus': userStatus});
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving registries."
+        });
+    });
+    
+
+};
+
+
 // Update a registry identified by the registryId in the request
 exports.update = (req, res) => {
     // Validate Request
