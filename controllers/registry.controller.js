@@ -60,10 +60,9 @@ exports.checkStatus = (req, res) => {
         for (var i = 0; i < response.length; i++) {
             for (var j=0; j < workers.length; j++){
                 if (response[i].name == workers[j]){
+                    usersArrived[j] = true;
                     if(response[i].source=='exitCam'){
                         usersLeft[j] = true;
-                    } else {
-                        usersArrived[j] = true;
                     }
                 }
                 //console.log(activeUsers[j])
