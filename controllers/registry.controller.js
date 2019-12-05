@@ -100,13 +100,15 @@ exports.findAll = (req, res) => {
 
 // Retrieve and return all registries at a specific date.
 exports.findByDate = (req, res) => {
-    
-    
-    let date = new Date(req.params.date);
-    var testDate = new Date(date);
-    testDate.setDate (testDate.getDate()+1);
+    let receivedDate = req.params.date;
+    console.log(receivedDate);
+    let today = new Date(receivedDate);
+    today.setHours(0);
+    today.setMinutes(0);
+    let tomorrow = new Date(today);
+    tomorrow.setDate (tomorrow.getDate()+1);
 
-    Registry.find({ createdAt: { $gte: date, $lt: testDate }})
+    Registry.find({ createdAt: { $gte: today, $lt: tomorrow }})
     .then(registry => {
         res.send(registry);
     }).catch(err => {

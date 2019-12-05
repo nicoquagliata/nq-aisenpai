@@ -120,7 +120,7 @@ function listAllRegistries() {
 
 function listActiveUsers() {
     let divlistActiveUsers = document.querySelector('#listActiveUsers');
-    let date = curday();
+    let date = new Date();
     //date = date.getFullYear()+'-'+date.getMonth() + 1).padStart(2, '0')+'-'+date.getDate();
     console.log(date);
     console.log('listing active users');
