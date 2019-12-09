@@ -68,6 +68,10 @@ function requestName() {
                 <div class="alert alert-info">Imagen subida con éxito, se reconoció a ${persona_name} (${persona_score*100}%)</div>
             `;
 
+            if (persona_name == 'nico'){
+                persona_name = 'Nicolas';
+            }
+
             //fetch('/api/v1/db')
             let registry = {
                 source: sourceField.value,
