@@ -20,8 +20,8 @@ const menuItems = {
     ]
 };
 
-const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne'];
-
+const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne','Leonardo', 'Nicolas', 'Ricardo'];
+const workersToRender = ['Leonardo', 'Nicolas', 'Ricardo'];
 
 // check remote api
 //const remoteApi = "https://q-starternodeapp.mybluemix.net/api/v1/classify/image";
@@ -129,6 +129,8 @@ function listActiveUsers() {
     //date = date.getFullYear()+'-'+date.getMonth() + 1).padStart(2, '0')+'-'+date.getDate();
     console.log(date);
     console.log('listing active users');
+    console.log(workers);
+
     fetch('/api/v1/db/findByDate/' + date, {
             method: 'get'
         })
@@ -140,14 +142,18 @@ function listActiveUsers() {
             divlistActiveUsers.innerHTML += `
             <div class="alert alert-info">Archivos correspondientes al ${date}</div>
         `;
+        console.log(response);
 
 
             let usersArrived = [];
             let usersLeft = [];
 
             for (var i = 0; i < response.length; i++) {
-                for (var j = 0; j < workers.length; j++) {
-                    if (response[i].name == workers[j]) {
+                console.log('response --> ', response[i].name, ' source:', response[i].source);
+               for (var j = 0; j < workersToRender.length; j++) {
+                
+                if (response[i].name == workersToRender[j]) {
+                    
                         if (response[i].source == 'exitCam') {
                             usersLeft[j] = true;
                         } else {
@@ -160,7 +166,7 @@ function listActiveUsers() {
 
             }
 
-            for (var k = 0; k < workers.length; k++) {
+            for (var k = 0; k < workersToRender.length; k++) {
                 if (usersArrived[k] == true) {
                     if (usersLeft[k] == true) {
                         hasExit = 'has gone';
@@ -168,11 +174,11 @@ function listActiveUsers() {
                         hasExit = 'still working';
                     }
                     divlistActiveUsers.innerHTML += `
-                    <div class="">${workers[k]} ${hasExit}</div>
+                    <div class="">${workersToRender[k]} ${hasExit}</div>
                 `;
                 } else {
                     divlistActiveUsers.innerHTML += `
-                    <div class="">${workers[k]} didn't come to the office</div>
+                    <div class="">${workersToRender[k]} didn't come to the office</div>
                 `;
                 }
             }
