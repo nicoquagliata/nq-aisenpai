@@ -191,7 +191,7 @@ exports.checkIfIsAtTheOffice = (req, res) => {
 
     .then(response => {
         //console.log(registry);
-        const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne'];
+        const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne','Leonardo', 'Nicolas', 'Ricardo'];
         let userStatus = 0;
         let usersArrived = [];
         let usersLeft = [];
