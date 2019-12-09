@@ -55,13 +55,15 @@ exports.checkStatus = (req, res) => {
     Registry.find({ createdAt: { $gte: today, $lt: tomorrow } })
 
     .then(response => {
-        //console.log(registry);
-        const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne'];
+        //console.log(response);
+        const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne','Leonardo', 'Nicolas', 'Ricardo'];
+        //const workers = ['Leonardo', 'Nicolas', 'Ricardo'];
         let userStatus = 0;
         let usersArrived = [];
         let usersLeft = [];
-
+        //console.log(resopnse.length);
         for (var i = 0; i < response.length; i++) {
+            console.log('test');
             for (var j = 0; j < workers.length; j++) {
                 if (response[i].name == workers[j]) {
                     usersArrived[j] = true;

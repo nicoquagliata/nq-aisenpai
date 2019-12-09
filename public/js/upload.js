@@ -20,8 +20,8 @@ const menuItems = {
     ]
 };
 
-const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne','Leonardo', 'Nicolas', 'Ricardo'];
-const workersToRender = ['Leonardo', 'Nicolas', 'Ricardo'];
+//const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne','Leonardo', 'Nicolas', 'Ricardo'];
+const workers = ['Leonardo', 'Nicolas', 'Ricardo'];
 
 // check remote api
 //const remoteApi = "https://q-starternodeapp.mybluemix.net/api/v1/classify/image";
@@ -150,9 +150,9 @@ function listActiveUsers() {
 
             for (var i = 0; i < response.length; i++) {
                 console.log('response --> ', response[i].name, ' source:', response[i].source);
-               for (var j = 0; j < workersToRender.length; j++) {
+               for (var j = 0; j < workers.length; j++) {
                 
-                if (response[i].name == workersToRender[j]) {
+                if (response[i].name == workers[j]) {
                     
                         if (response[i].source == 'exitCam') {
                             usersLeft[j] = true;
@@ -166,7 +166,7 @@ function listActiveUsers() {
 
             }
 
-            for (var k = 0; k < workersToRender.length; k++) {
+            for (var k = 0; k < workers.length; k++) {
                 if (usersArrived[k] == true) {
                     if (usersLeft[k] == true) {
                         hasExit = 'has gone';
@@ -174,11 +174,11 @@ function listActiveUsers() {
                         hasExit = 'still working';
                     }
                     divlistActiveUsers.innerHTML += `
-                    <div class="">${workersToRender[k]} ${hasExit}</div>
+                    <div class="">${workers[k]} ${hasExit}</div>
                 `;
                 } else {
                     divlistActiveUsers.innerHTML += `
-                    <div class="">${workersToRender[k]} didn't come to the office</div>
+                    <div class="">${workers[k]} didn't come to the office</div>
                 `;
                 }
             }
