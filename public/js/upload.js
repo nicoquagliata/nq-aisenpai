@@ -138,46 +138,59 @@ function listActiveUsers() {
     let divlistActiveUsers = document.querySelector('#listActiveUsers');
     let divDate = document.querySelector('#date');
     divlistActiveUsers.innerHTML = '';
-    let date = nDate;
+    let date = new Date();
     //date = date.getFullYear()+'-'+date.getMonth() + 1).padStart(2, '0')+'-'+date.getDate();
     console.log(date);
     console.log('listing active users');
     console.log(workers);
     divDate.innerHTML = date;
-    fetch('/api/v1/db/findByDate/' + date, {
-            method: 'get'
-        })
-        .then(response => response.json())
-        .then(async response => {
-            divlistActiveUsers.innerHTML += `
-            <div class="alert alert-success">Se recuperaron ${response.length} registros</div>
-            `;
-            divlistActiveUsers.innerHTML += `
-            <div class="alert alert-info">Archivos correspondientes al ${date}</div>
-        `;
-        console.log(response);
+    fetch('/api/v1/db/listAllEntries', {
+        method: 'get'
+    })
+    .then(response => response.json())
+    .then(async response => {
+        let matches = 0;
 
+
+            
+            
+        console.log(response);
 
             let usersArrived = [];
             let usersLeft = [];
 
             for (var i = 0; i < response.length; i++) {
-                console.log('response --> ', response[i].name, ' source:', response[i].source);
-               for (var j = 0; j < workers.length; j++) {
+                console.log('----------------------------------')
+                console.log(response[i].createdAt)
+                let responseDate = new Date(response[i].createdAt);
+                responseDate.setHours (responseDate.getHours() + 3)
+                console.log(responseDate)
+                console.log('----------------------------------')
+                if (responseDate.getDate() == date.getDate()){
+                    console.log('match')
+                    matches ++;
+                    for (var j = 0; j < workers.length; j++) {
                 
-                if (response[i].name == workers[j]) {
-                    
-                        if (response[i].source == 'exitCam') {
-                            usersLeft[j] = true;
-                        } else {
-                            usersArrived[j] = true;
+                        if (response[i].name == workers[j]) {
+                            
+                                if (response[i].source == 'exitCam') {
+                                    usersLeft[j] = true;
+                                } else {
+                                    usersArrived[j] = true;
+                                }
+                            }
+                            //console.log(activeUsers[j])
                         }
                     }
-                    //console.log(activeUsers[j])
                 }
-                //let registryDate = new Date(response[i].createdAt);   
-
-            }
+               
+                divlistActiveUsers.innerHTML += `
+                  <div class="alert alert-success">Se recuperaron ${matches} registros</div>
+                `;
+                divlistActiveUsers.innerHTML += `
+                    <div class="alert alert-info">Archivos correspondientes al ${date}</div>
+                `;
+            
 
             for (var k = 0; k < workers.length; k++) {
                 if (usersArrived[k] == true) {
