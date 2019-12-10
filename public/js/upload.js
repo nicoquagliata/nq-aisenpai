@@ -129,12 +129,14 @@ function listAllRegistries() {
 
 function listActiveUsers() {
     let divlistActiveUsers = document.querySelector('#listActiveUsers');
+    let divDate = document.querySelector('#date');
+    divlistActiveUsers.innerHTML = '';
     let date = new Date();
     //date = date.getFullYear()+'-'+date.getMonth() + 1).padStart(2, '0')+'-'+date.getDate();
     console.log(date);
     console.log('listing active users');
     console.log(workers);
-
+    divDate.innerHTML = date;
     fetch('/api/v1/db/findByDate/' + date, {
             method: 'get'
         })
