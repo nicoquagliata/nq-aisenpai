@@ -78,9 +78,11 @@ exports.checkStatus = (req, res) => {
 
         if (usersArrived[user] == true) {
             if (usersLeft[user] == true) {
+                console.log('2');
                 userStatus = 2;
             } else {
                 userStatus = 1;
+                console.log('1');
             }
         }
         res.send({ 'userStatus': userStatus });
