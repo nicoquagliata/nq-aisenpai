@@ -75,7 +75,7 @@ exports.checkStatus = (req, res) => {
             }
             //let registryDate = new Date(response[i].createdAt);              
         }
-
+        userStatus = 'no esta';
         if (usersArrived[user] == true) {
             if (usersLeft[user] == true) {
                 console.log('2');
