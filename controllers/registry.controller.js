@@ -51,9 +51,10 @@ exports.checkStatus = (req, res) => {
     today.setMinutes(0);
     let tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
+    console.log(today);
+    console.log(tomorrow);
 
-    Registry.find({ createdAt: { $gte: today, $lt: tomorrow } })
-
+    Registry.find()
     .then(response => {
         //console.log(response);
         const workers = ['Ashton Kutcher', 'Adam Sandler', 'Adele', 'bella thorne','Leonardo', 'Nicolas', 'Ricardo'];
@@ -63,19 +64,22 @@ exports.checkStatus = (req, res) => {
         let usersLeft = [];
         //console.log(resopnse.length);
         for (var i = 0; i < response.length; i++) {
-            console.log('test');
-            for (var j = 0; j < workers.length; j++) {
-                if (response[i].name == workers[j]) {
-                    usersArrived[j] = true;
-                    if (response[i].source == 'exitCam') {
-                        usersLeft[j] = true;
+            let responseDate = new Date(response[i].createdAt);
+            responseDate.setHours (responseDate.getHours() + 3)
+            if (responseDate.getDate() == today.getDate()){
+                console.log(response[i].name);
+                for (var j = 0; j < workers.length; j++) {
+                    if (response[i].name == workers[j]) {
+                        usersArrived[j] = true;
+                        if (response[i].source == 'exitCam') {
+                            usersLeft[j] = true;
+                        }
                     }
+                    //console.log(activeUsers[j])
                 }
-                //console.log(activeUsers[j])
-            }
-            //let registryDate = new Date(response[i].createdAt);              
+            }             
         }
-        userStatus = 'no esta';
+        //userStatus = 'no esta';
         if (usersArrived[user] == true) {
             if (usersLeft[user] == true) {
                 console.log('2');
