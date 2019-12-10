@@ -11,6 +11,13 @@ console.log(testDate);
 console.log(testDate.getTimezoneOffset());
 console.log(testDate.toUTCString());
 
+const nDate = new Date().toLocaleString('en-US', {
+    timeZone: 'America/Montevideo'
+});
+  
+console.log(nDate);
+
+
 const menuItems = {
     'menu': [
         { name: 'Upload access cam', link: '/upload', sub: null },
@@ -131,7 +138,7 @@ function listActiveUsers() {
     let divlistActiveUsers = document.querySelector('#listActiveUsers');
     let divDate = document.querySelector('#date');
     divlistActiveUsers.innerHTML = '';
-    let date = new Date();
+    let date = nDate;
     //date = date.getFullYear()+'-'+date.getMonth() + 1).padStart(2, '0')+'-'+date.getDate();
     console.log(date);
     console.log('listing active users');
