@@ -126,7 +126,7 @@ function listAllRegistries() {
             for (i = 0; i < response.length; i++) {
                 let registriDate = new Date(response[i].createdAt);
                 divlistAllRegistries.innerHTML += `
-            <div class="">${response[i].name} || ${registriDate} || ${response[i].source} ||</div>
+            <div class="">${response[i].name} || ${response[i].createdAt} || ${response[i].source} ||</div>
             `;
             }
         })
@@ -158,19 +158,21 @@ function listActiveUsers() {
 
             let usersArrived = [];
             let usersLeft = [];
+            let time = [];
 
             for (var i = 0; i < response.length; i++) {
                 console.log('----------------------------------')
-                console.log(response[i].createdAt)
+                //console.log(response[i].createdAt)
                 let responseDate = new Date(response[i].createdAt);
                 responseDate.setHours (responseDate.getHours() + 3)
-                console.log(responseDate)
-                console.log('----------------------------------')
+                //console.log(responseDate)
+                //console.log('----------------------------------')
                 if (responseDate.getDate() == date.getDate()){
-                    console.log('match')
+                    //console.log('match')
+                    console.log('match:' + response[i].name + ' ---> ' + response[i].createdAt);
                     matches ++;
                     for (var j = 0; j < workers.length; j++) {
-                
+                        time[j] = response[i].createdAt;
                         if (response[i].name == workers[j]) {
                             
                                 if (response[i].source == 'exitCam') {
