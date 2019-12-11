@@ -21,7 +21,7 @@ exports.create = (req, res) => {
         source: req.body.source || "no place targeted",
         name: req.body.name,
         score: req.body.score,
-        createdAt: regDate
+        //createdAt: regDate
     });
 
     // Save Registry in the database
@@ -47,10 +47,10 @@ exports.checkStatus = (req, res) => {
     let user = req.body.id;
     console.log(user);
     let today = new Date();
-    today.setHours(0);
-    today.setMinutes(0);
+    today.setHours(today.getHours() -12);
     let tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(today.getHours() +8);
     console.log(today);
     console.log(tomorrow);
 
@@ -66,7 +66,7 @@ exports.checkStatus = (req, res) => {
         for (var i = 0; i < response.length; i++) {
             let responseDate = new Date(response[i].createdAt);
             responseDate.setHours (responseDate.getHours() + 3)
-            if (responseDate.getDate() == today.getDate()){
+            if (responseDate.getDate() >= today.getDate()){
                 console.log(response[i].name);
                 for (var j = 0; j < workers.length; j++) {
                     if (response[i].name == workers[j]) {
