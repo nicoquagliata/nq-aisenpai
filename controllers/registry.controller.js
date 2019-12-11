@@ -47,10 +47,10 @@ exports.checkStatus = (req, res) => {
     let user = req.body.id;
     console.log(user);
     let today = new Date();
-    today.setHours(today.getHours() -12);
+    today.setHours(today.getHours() - 12);
     let tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow.setHours(today.getHours() +8);
+    tomorrow.setHours(today.getHours() + 8);
     console.log(today);
     console.log(tomorrow);
 
